@@ -1,21 +1,23 @@
-var Budget = +prompt('Ваш бюджет?');
-var ShopName = prompt('Название вашего магазина?');
-var shopGoods = [prompt('Какой тип товаров будем продавать?'), 
-								prompt('Какой тип товаров будем продавать?'),
-								prompt('Какой тип товаров будем продавать?')];
+var money = +prompt('Ваш бюджет?');
+var name = prompt('Название вашего магазина?');
+
 
 var employers = {};
 
-var BudgetDay = Budget/30;
-var open = confirm("Магазин открыт?");
-
-alert("Ваш бюджет на 1 день: " + BudgetDay);
+var BudgetDay = money/30;
 
 var mainList = {
-	Budget,
-	ShopName,
-	shopGoods,
-	employers,
-	open
+	Budget: money,
+	ShopName: name,
+	shopGoods: [],
+	employers: {},
+	open: false
 };
+
+
+mainList.shopGoods[0] = prompt("Какой тип товаров будем продавать?");
+mainList.shopGoods[1] = prompt("Какой тип товаров будем продавать?");
+mainList.shopGoods[2] = prompt("Какой тип товаров будем продавать?");
+
+alert("Ваш бюджет на 1 день: " + BudgetDay);
 console.log(mainList);
