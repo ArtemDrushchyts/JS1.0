@@ -21,7 +21,7 @@ for (let i = 0; i < 3; i++) {
 		console.log("Все верно!");
 		mainList.shopGoods[i] = a;
 	} else {
-		console.log("Неверно");
+		i = i -1;
 	}
 }
 
