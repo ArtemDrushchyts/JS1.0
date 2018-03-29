@@ -27,6 +27,7 @@ var mainList = {
 	employers: {},
 	open: false,
 	discount: false
+
 };
 
 function chooseGoods() {
@@ -79,8 +80,10 @@ budgetBay();
 
 function discount() {
 	var disc = confirm("У вас есть скидка");
+		mainList.discount = disc;
 	if (disc === true) {
 		return alert(price/100*80);
+		
 	} else {
 		return alert(price);
 	}
