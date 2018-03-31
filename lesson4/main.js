@@ -77,14 +77,17 @@ var mainList = {
 		mainList.shopItems.push(prompt("Подождите еще ", "")); 
 		mainList.shopItems.sort();
 		
+	},
+	overkill: function overkill () { 
+		mainList.shopItems.forEach(function (item,i,arr) {
+	
+		alert("У нас вы можете купить: " + (i+1) + ": " + item);
+	
+		});
 	}
 };
 
-mainList.shopItems.forEach(function (item,i,arr) {
-	
-	console.log("У нас вы можете купить: " + i + ": " + item)
-	
-})
+
 
 for (var prop in mainList) {
 	console.log("Наш магазин включает в себя: " + prop);
