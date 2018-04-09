@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', function() {
 				}
 			}
 
-			hideTabContent(1)
+			hideTabContent(1);
 
 			function showTabContent(b) {
 				if( tabContent[b].classList.contains('hide')) {
@@ -35,7 +35,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 		//  Timer
 
-		let deadline = '2018-04-06';
+		let deadline = '2018-04-10';
 
 		function getTimeRemaining(endtime) {
 			let t = Date.parse(endtime) - Date.parse(new Date()),
@@ -72,7 +72,7 @@ window.addEventListener('DOMContentLoaded', function() {
 						if (t.total <= 0) {
 							clearInterval(timeInterval);
 						} 
-					};
+					}
 					
 					updateClock();
 					
@@ -82,24 +82,32 @@ window.addEventListener('DOMContentLoaded', function() {
 
 		setClock('timer', deadline);
 			
-		var linkNav = document.querySelectorAll('[href^="#nav"]'),
-    V = 200;  
-for (var i = 0; i < linkNav.length; i++) {
-  linkNav[i].onclick = function(){
-    var w = window.pageYOffset,
-        hash = this.href.replace(/[^#]*(.*)/, '$1');
-        t = document.querySelector(hash).getBoundingClientRect().top,
-        start = null;
-    requestAnimationFrame(step);
-    function step(time) {
-      if (start === null) start = time;
-      var progress = time - start,
-          r = (t < 0 ? Math.max(w - progress/V, w + t) : Math.min(w + progress/V, w + t));
-      window.scrollTo(0,r);
-      if (r != w + t) {requestAnimationFrame(step)} else {location.hash = hash}
-    }
-    return false;
-  }
-}
+		window.addEventListener('scroll', function(e) {
+	  	let nav = document.querySelectorAll('[id^="nav"]');
+	  	for (let i = 0; i < nav.length; i++) { 
+	    document.querySelector('a[href="#' + nav[i].id + '"]');
+	 	 	}
+		}, false);
+
+		let linkNav = document.querySelectorAll('[href^="#"]'),
+    		V = 0.5;  
+		for (let i = 0; i < linkNav.length; i++) {
+			  	linkNav[i].onclick = function(){
+			    let w = window.pageYOffset,
+			        hash = this.href.replace(/[^#]*(.*)/, '$1'),
+			        t = document.querySelector(hash).getBoundingClientRect().top,
+			        start = null;
+			    requestAnimationFrame(step);
+			    function step(time) {
+			      if (start === null) start = time;
+			      let progress = time - start,
+			          r = (t < 0 ? Math.max(w - progress/V, w + t) : Math.min(w + progress/V, w + t));
+			      window.scrollTo(0,r);
+			      if (r != w + t) {requestAnimationFrame(step);} else {location.hash = hash;}
+			    }
+			    return false;
+			  };
+		}
+
 
 });
