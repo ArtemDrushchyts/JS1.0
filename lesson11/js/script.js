@@ -35,7 +35,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 		//  Timer
 
-		let deadline = '2018-04-12';
+		let deadline = '2018-04-11';
 
 		function getTimeRemaining(endtime) {
 			let t = Date.parse(endtime) - Date.parse(new Date()),
@@ -82,7 +82,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 		setClock('timer', deadline);
 
-		// scroll
+			// scroll
 
 		window.addEventListener('scroll', function(e) {
 	  	let nav = document.querySelectorAll('[id^="nav"]');
@@ -118,7 +118,7 @@ window.addEventListener('DOMContentLoaded', function() {
 				overlay = document.querySelector('.overlay'),
 				close = document.querySelector('.popup-close');
 
-				let f = function() {
+				f = function() {
 				this.classList.add('more-splash');
 				overlay.style.display = "block";
 				overlay.classList.add('animateTab')
@@ -134,42 +134,15 @@ window.addEventListener('DOMContentLoaded', function() {
 			this.classList.add('more-splash');
 			overlay.style.display = "block";
 			document.body.style.overflow = 'hidden';
-			});
-			close.addEventListener('click', function() {
+		});
+		close.addEventListener('click', function() {
 			overlay.style.display = "none";
 			more.classList.remove('more-splash');
 			document.body.style.overflow = '';
 
-			});
+		});
 
-		// class option {
-		// 	constructor(height, width, bg, fontSize, textAlign){
-		// 		this.height = height;
-		// 		this.width = width;
-		// 		this.bg = bg;
-		// 		this.fontSize = fontSize;
-		// 		this.textAlign = textAlign;
-		// 	}
-
-		// 	newDiv() {
-				
-		// 		let div = document.createElement('div');
-		// 		document.body.appendChild(div);
-		// 		div.innerHTML = 'Добавим немного текста';
-		// 		div.style.cssText=`height: ${this.height}px; \
-		// 		width: ${this.width}px; \
-		// 		background-color: ${this.bg}; \
-		// 		font-size: ${this.fontSize}; \
-		// 		text-align: ${this.textAlign}; \
-		// 		`;
-				
-		// 	}
-		// }
-		// const objDiv = new option(400, 500, 'yellow', 25, 'center');
-
-		// console.log(objDiv.newDiv());
-
-		//form
+		//Form
 		let message = new Object();
 		message.loading = "Загрузка...";
 		message.success = "Спасибо! Скоро мы с вами свяжимся";
@@ -184,9 +157,9 @@ window.addEventListener('DOMContentLoaded', function() {
 					event.preventDefault();
 					form.appendChild(statusMessage);
 
-					// ASAX
+					// AJAX
 					let request = new XMLHttpRequest();
-					request.open("POST", 'server.php');
+					request.open('POST', 'server.php');
 
 					request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
@@ -196,11 +169,11 @@ window.addEventListener('DOMContentLoaded', function() {
 
 					request.onreadystatechange = function() {
 						if (request.readyState < 4) {
-							statusMessage.innerHTML =  message.loading;
+							statusMessage.innerHTML = message.loading;
 						} else if (request.readyState === 4) {
 							if (request.status == 200 && request.status < 300) {
 								statusMessage.innerHTML = message.success;
-								  //Добавляем контент на страницу
+								// Добавляем контент на страницу
 							}
 							else {
 								statusMessage.innerHTML = message.failure;
@@ -209,7 +182,44 @@ window.addEventListener('DOMContentLoaded', function() {
 					}
 					for (let i = 0; i < input.length; i++) {
 						input[i].value = '';
-						// очиста полей ввода
+						// Очищаем поля ввода
 					}
 				});
+
+				let formBtn = document.getElementById('form'),
+						inputBtn = formBtn.getElementsByTagName('input');
+
+				formBtn.addEventListener('submit', function(event) {
+					event.preventDefault();
+					formBtn.appendChild(statusMessage);
+
+					let request = new XMLHttpRequest();
+					request.open('POST', 'server.php');
+
+					request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+					let formData = new FormData(form);
+
+					request.send(formData);
+
+					request.onreadystatechange = function() {
+						if (request.readyState < 4) {
+							statusMessage.innerHTML = message.loading;
+						} else if (request.readyState === 4) {
+							if (request.status == 200 && request.status < 300) {
+								statusMessage.innerHTML = "<img  src='img/ok.png'>";
+								// Добавляем контент на страницу
+							}
+							else {
+								statusMessage.innerHTML = message.failure;
+							}
+						}
+					}
+					for (let i = 0; i < input.length; i++) {
+						input[i].value = '';
+						// Очищаем поля ввода
+					}
+				});
+
 });
+
