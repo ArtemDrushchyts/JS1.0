@@ -1,14 +1,13 @@
-let arr = [];
+
 
 function massiv() {
 	let countMassiv = prompt("Сколько массивов включить?", "");
-
-	for(let i = 0; i < countMassiv.length; i++) {
-		arr.push([i]);
-		// for (j=0; j < 5; j++) {
-		// 	arr[i].push(j);
-		// } 
+	let arr = [];
+	for(let i = 1; i < countMassiv.length; i++) {
+		arr[i] = [i];
+		
 	}
-	console.log(arr);
+	console.log();
+
 }
 massiv();

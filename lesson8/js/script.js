@@ -82,6 +82,9 @@ window.addEventListener('DOMContentLoaded', function() {
 
 		setClock('timer', deadline);
 			
+
+		// scroll
+
 		window.addEventListener('scroll', function(e) {
 	  	let nav = document.querySelectorAll('[id^="nav"]');
 	  	for (let i = 0; i < nav.length; i++) { 
