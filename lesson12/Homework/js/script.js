@@ -7,7 +7,20 @@ $(document).ready(function() {
 
 
 	});
+	$(document).click(function(e){ 
+		var elem = $(".modal"); 
+		if(e.target != elem[0] && !elem.has(e.target).length){ 
+			elem.hide(); 
+			if($('.overlay').fadeIn('slow') === true){
+				$('.overlay').fadeIn('slow');
+			}
+		} 
+	});
 
+	// $('.main_logo').on('click', function() {
+	// 	$(".modal").animate({opacity: 'toggle', 'top':'-1500'},1000)
+	// 	$(".overlay").fadeOut('slow');
+	// })
 	$('.close').on('click', function() {
 		$(".modal").animate({opacity: 'toggle', 'top':'-1500'},1000)
 		$(".overlay").fadeToggle('slow');
