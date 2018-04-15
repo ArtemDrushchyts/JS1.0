@@ -1,4 +1,3 @@
-'use strict';
 function tab() {
 
 		let tab = document.getElementsByClassName('info-header-tab'),

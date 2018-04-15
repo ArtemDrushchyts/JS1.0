@@ -1,4 +1,3 @@
-'use strict';
 function timer() {
 			let deadline = '2018-04-11';
 

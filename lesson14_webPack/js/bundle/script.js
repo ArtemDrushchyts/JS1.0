@@ -1,4 +1,5 @@
-'use strict';
+var script = (function () {
+window.addEventListener('DOMContentLoaded', function() {
 	
 	let tab = require('../parts/tab.js');
 	let modal = require('../parts/modal.js');
@@ -8,13 +9,18 @@
 	let scroll = require('../parts/scroll.js');
 	let timer = require('../parts/timer.js');
 
+	return {
+	tab: importedTab,
+	modal: importedModal,
+	ajax: importedAjax,
+	slider: importedSlider,
+	calc: importedCalc,
+	scroll: importedScroll,
+	timer: immportedTimer
+	}
 
-	tab("script.js");
-	modal("script.js");
-	ajax("script.js");
-	slider("script.js");
-	calc("script.js");
-	scroll("script.js");
-	timer("script.js");
+});
 
+})();
 
+module.exports = script;

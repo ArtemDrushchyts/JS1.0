@@ -1,4 +1,3 @@
-'use strict';
 function calc() {
 
 							let persons = document.getElementsByClassName('counter-block-input')[0],

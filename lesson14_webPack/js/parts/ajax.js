@@ -1,4 +1,3 @@
-'use strict';
 function ajax() {
 	let message = new Object();
 		message.loading = "Загрузка...";

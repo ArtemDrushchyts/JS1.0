@@ -1,4 +1,3 @@
-'use strict';
 function slider() {
 
 	let slideIndex = 1,
