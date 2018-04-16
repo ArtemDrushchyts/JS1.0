@@ -1,4 +1,3 @@
-var script = (function () {
 window.addEventListener('DOMContentLoaded', function() {
 	
 	let tab = require('../parts/tab.js');
@@ -9,18 +8,13 @@ window.addEventListener('DOMContentLoaded', function() {
 	let scroll = require('../parts/scroll.js');
 	let timer = require('../parts/timer.js');
 
-	return {
-	tab: importedTab,
-	modal: importedModal,
-	ajax: importedAjax,
-	slider: importedSlider,
-	calc: importedCalc,
-	scroll: importedScroll,
-	timer: immportedTimer
-	}
+	tab();
+	modal();
+	ajax();
+	slider();
+	calc();
+	scroll();
+	timer();
 
 });
 
-})();
-
-module.exports = script;

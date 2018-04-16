@@ -4,8 +4,11 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "build" : "webpack"
+    "build": "webpack"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.5.0"
+  }
 }
