@@ -28,15 +28,19 @@ window.addEventListener('DOMContentLoaded', function() {
 			bioCoud = cardCond.querySelector('.bio'),
 			viewsCoud = cardCond.querySelector('.views'),
 			sexCoud = cardCond.querySelector('.sex'),
+			photoCoud = cardCond.querySelector('.photo'),
+			phot = cardCond.querySelector('.photo-2'),
 
 			nameValue = document.getElementById('name'),
 			ageValue = document.getElementById('age'),
 			bioValue = document.getElementById('bio'),
 			selectValue = document.getElementById('select'),
-			sexValue = document.getElementsByName('sex');
-
+			sexValue = document.getElementsByName('sex'),
+			personEasy = document.getElementsByClassName('person-easy')[0];
+			personEasy.style.cssText = 'background: url("img/construct-5.png") center no-repeat; background-size: 70%;';
 			
 
+			
 
 	btn.addEventListener('click', () => {
 		custom.style.display = "none";
@@ -49,10 +53,10 @@ window.addEventListener('DOMContentLoaded', function() {
 		let name = nameValue.value,
 				age = ageValue.value,
 				bio = bioValue.value,
-				select = selectValue.value,
-				personEasy = document.getElementsByClassName('person-easy')[0];
+				select = selectValue.value;
+				
 				for(let i = 0; i < sexValue.length; i++) {
-					if(document.getElementsByName('sex')[i].checked == true) {
+					if(document.getElementsByName('sex')[i].checked === true) {
 				 			var sex = sexValue[i].value;
 						}
 				}
@@ -61,9 +65,67 @@ window.addEventListener('DOMContentLoaded', function() {
 		bioCoud.textContent = bio;
 		viewsCoud.textContent = select;
 		sexCoud.textContent = sex;
-		if(sex == 'Мужской') {
-			personEasy.style.cssText = 'background: url("") center no-repeat;'
-		}
+
 	});
+
+	let radio = document.querySelector('.radio');
+
+	radio.addEventListener('change', () => {
+			if(sexValue[0].checked) {
+			personEasy.style.cssText = 'background: url("img/construct-5.png") center no-repeat; background-size: 70%;';
+			preview.style.backgroundImage = 'url("img/construct-5.png")';
+		} else {
+			personEasy.style.cssText = 'background: url("img/construct-1.png") center no-repeat; background-size: 70%;';
+			preview.style.backgroundImage = `url("img/construct-1.png")`
+		}
+	
+	});
+
+	//slider
+	let preview = document.getElementsByClassName('preview')[0],
+			prev = document.getElementsByClassName('prev')[0],
+			next = document.getElementsByClassName('next')[0],
+			slideIndex = 5;
+			preview.style.backgroundImage = `url("img/construct-6.png")`;
+			showSlides(slideIndex);
+
+			function showSlides(n) {
+				if (n > 4 && sexValue[1].checked) {
+				slideIndex = 1;
+				}
+				if (n < 1 && sexValue[1].checked) {
+					slideIndex = 4;
+				}
+				
+				if (n > 8 && sexValue[0].checked) {
+				slideIndex = 5;
+				}
+
+				if (n < 5 && sexValue[0].checked) {
+					slideIndex = 8;
+				}
+
+				var a = `url("img/construct-${slideIndex}.png")`;
+				preview.style.backgroundImage = a;
+				phot.style.cssText = `background: url("img/construct-${slideIndex}.png") center no-repeat; 
+				background-size: contain;`;
+				personEasy.style.backgroundImage = `url("img/construct-${slideIndex}.png")`;
+			}	
+		function plusSlides (n) {
+			showSlides(slideIndex +=n)
+		}
+
+		function currentSlide(n) {
+			
+		}
+
+		prev.addEventListener('click', function(){
+			plusSlides(-1);
+		});
+
+		next.addEventListener('click', function(){
+			plusSlides(1);
+		});
+
 	
 });
