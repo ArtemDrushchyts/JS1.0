@@ -136,5 +136,15 @@ window.addEventListener('DOMContentLoaded', function() {
 			plusSlides(1);
 		});
 
-	
+		// Reset result
+		
+		let reset = document.getElementById('reset');
+
+		reset.addEventListener('click', () => {
+		main.style.display = "none";
+		custom.style.display = "flex";
+		customInfo.style.display = "block";
+		customChar.style.display = "block";
+		customStyle.style.display = "block";
+		})
 });
