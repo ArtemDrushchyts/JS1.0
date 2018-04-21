@@ -39,14 +39,23 @@ window.addEventListener('DOMContentLoaded', function() {
 			personEasy = document.getElementsByClassName('person-easy')[0];
 			personEasy.style.cssText = 'background: url("img/construct-5.png") center no-repeat; background-size: 70%;';
 			
-
+			let resultСount = document.getElementsByClassName('result-count'),
+					progressBar1 = document.getElementsByClassName('progress-bar-1')[0],
+					progressBar2 = document.getElementsByClassName('progress-bar-2')[0],
+					progressBar3 = cardCond.getElementsByClassName('progress-bar-2')[0];
 			
 
 	btn.addEventListener('click', () => {
 		custom.style.display = "none";
 		main.style.display = "block";
 		mainCardsItem.parentNode.insertBefore(cardCond, mainCardsItem.nextSibling);
-		
+		for(let i = 0; i < 3; i++) {
+		resultСount[i].textContent = '0%';
+		}
+		progressBar1.style.cssText = 'height: 0;';
+		progressBar2.style.cssText = 'height: 0;';
+		progressBar3.style.cssText = 'height: 0;';
+
 	});
 	
 	customInfo.addEventListener('change', () => {
