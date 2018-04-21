@@ -146,5 +146,19 @@ window.addEventListener('DOMContentLoaded', function() {
 		customInfo.style.display = "block";
 		customChar.style.display = "block";
 		customStyle.style.display = "block";
-		})
+		});
+
+		// election
+
+		let voting = document.getElementById('voting');
+
+		voting.addEventListener('click', () => {
+			resultСount[0].textContent = '25%';
+			resultСount[1].textContent = '28%';
+			resultСount[2].textContent = '47%';
+			progressBar1.style.cssText = 'height: 25%;';
+			progressBar2.style.cssText = 'height: 28%;';
+			progressBar3.style.cssText = 'height: 47%;';
+		});
+
 });
