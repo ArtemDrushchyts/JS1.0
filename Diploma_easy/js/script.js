@@ -182,4 +182,22 @@ window.addEventListener('DOMContentLoaded', function() {
 			progressBar3.style.cssText = `height: ${n3}%;`;
 	  });
 
+		// crime
+
+		let crime = document.getElementById('crime');
+
+		crime.addEventListener('click', () => {
+			let n1 = Math.ceil(Math.random()*74);
+ 	  	let n2 = Math.ceil(Math.random()*(75-n1));
+    	let n3 = 75 - n1 - n2;
+    	let n4 = 25;
+    	resultСount[0].textContent = `${n1}%`;
+			resultСount[1].textContent = `${n2}%`;
+			resultСount[2].textContent = `${n3 + n4}%`;
+			progressBar1.style.cssText = `height: ${n1}%;`;
+			progressBar2.style.cssText = `height: ${n2}%;`;
+			progressBar3.style.cssText = `height: ${n3 + n4}%;`;
+			// console.log(n1,n2,n3)
+		});
+
 });
