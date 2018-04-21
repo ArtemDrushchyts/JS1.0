@@ -20,7 +20,7 @@ window.addEventListener('DOMContentLoaded', function() {
 	//Cards
 	let btn = document.getElementById("ready"),
 			mainCards = document.querySelector('.main-cards'),
-			mainCardsItem = document.getElementsByClassName('main-cards-item')[1];
+			mainCardsItem = document.getElementsByClassName('main-cards-item')[1],
 			mainItem = document.getElementsByClassName('main-cards-item'),
 			cardCond = mainCardsItem.cloneNode(true),
 			nameCond = cardCond.querySelector('.name'),
@@ -180,6 +180,24 @@ window.addEventListener('DOMContentLoaded', function() {
 			progressBar1.style.cssText = `height: ${n1}%;`;
 			progressBar2.style.cssText = `height: ${n2}%;`;
 			progressBar3.style.cssText = `height: ${n3}%;`;
+
+			let max = Math.max(n1,n2,n3);
+			if(max == n1){
+				mainItem[0].classList.add('main-cards-item-active');
+			} else {
+				mainItem[0].classList.remove('main-cards-item-active');
+			}
+			if (max == n2) {
+				mainItem[1].classList.add('main-cards-item-active');
+			} else {
+				mainItem[1].classList.remove('main-cards-item-active');
+			}
+			if (max == n3) {
+				mainItem[2].classList.add('main-cards-item-active');
+			} else {
+				mainItem[2].classList.remove('main-cards-item-active');
+			}
+			console.log(max);
 	  });
 
 		// crime
@@ -197,7 +215,27 @@ window.addEventListener('DOMContentLoaded', function() {
 			progressBar1.style.cssText = `height: ${n1}%;`;
 			progressBar2.style.cssText = `height: ${n2}%;`;
 			progressBar3.style.cssText = `height: ${n3 + n4}%;`;
-			// console.log(n1,n2,n3)
+			
+			let max = Math.max(n1,n2,n3+n4);
+						if(max == n1){
+				mainItem[0].classList.add('main-cards-item-active');
+			} else {
+				mainItem[0].classList.remove('main-cards-item-active');
+			}
+			if (max == n2) {
+				mainItem[1].classList.add('main-cards-item-active');
+			} else {
+				mainItem[1].classList.remove('main-cards-item-active');
+			}
+			if (max == (n3 + n4)) {
+				mainItem[2].classList.add('main-cards-item-active');
+			} else {
+				mainItem[2].classList.remove('main-cards-item-active');
+			}
+			// console.log(n1,n2,n3);
+			// console.log(max);
 		});
+
+
 
 });
