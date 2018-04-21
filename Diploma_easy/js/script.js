@@ -57,6 +57,14 @@ window.addEventListener('DOMContentLoaded', function() {
 		progressBar3.style.cssText = 'height: 0;';
 
 	});
+
+	function Year(i, s1, s2, s5) {
+    if (0 == i)
+        return '';
+ 
+    let a = i % 100, b = a % 10;
+    return i + ' ' + ((b >= 5 || 0 == b || a >= 11 && a <= 19) && s5 || 1 == b && s1 || s2 );
+	};
 	
 	customInfo.addEventListener('change', () => {
 		let name = nameValue.value,
@@ -69,8 +77,17 @@ window.addEventListener('DOMContentLoaded', function() {
 				 			var sex = sexValue[i].value;
 						}
 				}
+		if (isNaN(name)) {
 		nameCond.textContent = name;
-		ageCond.textContent = age;
+		} else {
+			alert('Некорректно введено имя!');
+		}
+
+		if (!isNaN(age)) {
+ 		ageCond.textContent = Year(age, 'год', 'года', 'лет');
+ 		} else {
+ 			alert('Некорректно введен возрост! Нужно вводить числовые значения!');
+ 		}
 		bioCoud.textContent = bio;
 		viewsCoud.textContent = select;
 		sexCoud.textContent = sex;
@@ -153,12 +170,16 @@ window.addEventListener('DOMContentLoaded', function() {
 		let voting = document.getElementById('voting');
 
 		voting.addEventListener('click', () => {
-			resultСount[0].textContent = '25%';
-			resultСount[1].textContent = '28%';
-			resultСount[2].textContent = '47%';
-			progressBar1.style.cssText = 'height: 25%;';
-			progressBar2.style.cssText = 'height: 28%;';
-			progressBar3.style.cssText = 'height: 47%;';
-		});
+			let n1 = Math.ceil(Math.random()*99);
+ 	  	let n2 = Math.ceil(Math.random()*(100-n1));
+    	let n3 = 100 - n1 - n2;
+			
+			resultСount[0].textContent = `${n1}%`;
+			resultСount[1].textContent = `${n2}%`;
+			resultСount[2].textContent = `${n3}%`;
+			progressBar1.style.cssText = `height: ${n1}%;`;
+			progressBar2.style.cssText = `height: ${n2}%;`;
+			progressBar3.style.cssText = `height: ${n3}%;`;
+	  });
 
 });
