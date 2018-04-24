@@ -37,7 +37,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			selectValue = document.getElementById('select'),
 			sexValue = document.getElementsByName('sex'),
 			personEasy = document.getElementsByClassName('person-easy')[0];
-			personEasy.style.cssText = 'background: url("img/construct-5.png") center no-repeat; background-size: 70%;';
+
 			
 			let resultСount = document.getElementsByClassName('result-count'),
 					progressBar1 = document.getElementsByClassName('progress-bar-1')[0],
@@ -77,10 +77,11 @@ window.addEventListener('DOMContentLoaded', function() {
 				 			var sex = sexValue[i].value;
 						}
 				}
-		if (isNaN(name)) {
+		if (isNaN(name) || name === '') {
 		nameCond.textContent = name;
 		} else {
 			alert('Некорректно введено имя!');
+			nameCond.textContent = '';
 		}
 
 		if (!isNaN(age)) {
@@ -94,15 +95,24 @@ window.addEventListener('DOMContentLoaded', function() {
 
 	});
 
-	let radio = document.querySelector('.radio');
+	let radio = document.querySelector('.radio'),
+			slideIndex = 5;
 
 	radio.addEventListener('change', () => {
 			if(sexValue[0].checked) {
 			personEasy.style.cssText = 'background: url("img/construct-5.png") center no-repeat; background-size: 70%;';
 			preview.style.backgroundImage = 'url("img/construct-5.png")';
-		} else {
+			phot.style.cssText = `background: url("img/construct-5.png") center no-repeat; 
+				background-size: contain;`;
+			slideIndex = 5;
+
+		} 
+			if(sexValue[1].checked) {
 			personEasy.style.cssText = 'background: url("img/construct-1.png") center no-repeat; background-size: 70%;';
-			preview.style.backgroundImage = `url("img/construct-1.png")`
+			preview.style.backgroundImage = `url("img/construct-1.png")`;
+			phot.style.cssText = `background: url("img/construct-1.png") center no-repeat; 
+				background-size: contain;`;
+			slideIndex = 1;
 		}
 	
 	});
@@ -110,9 +120,9 @@ window.addEventListener('DOMContentLoaded', function() {
 	//slider
 	let preview = document.getElementsByClassName('preview')[0],
 			prev = document.getElementsByClassName('prev')[0],
-			next = document.getElementsByClassName('next')[0],
-			slideIndex = 5;
-			preview.style.backgroundImage = `url("img/construct-6.png")`;
+			next = document.getElementsByClassName('next')[0];
+
+			preview.style.backgroundImage = `url("img/construct-5.png")`;
 			showSlides(slideIndex);
 
 			function showSlides(n) {
@@ -131,8 +141,8 @@ window.addEventListener('DOMContentLoaded', function() {
 					slideIndex = 8;
 				}
 
-				var a = `url("img/construct-${slideIndex}.png")`;
-				preview.style.backgroundImage = a;
+
+				preview.style.backgroundImage = `url("img/construct-${slideIndex}.png")`;
 				phot.style.cssText = `background: url("img/construct-${slideIndex}.png") center no-repeat; 
 				background-size: contain;`;
 				personEasy.style.backgroundImage = `url("img/construct-${slideIndex}.png")`;
@@ -141,9 +151,6 @@ window.addEventListener('DOMContentLoaded', function() {
 			showSlides(slideIndex +=n)
 		}
 
-		function currentSlide(n) {
-			
-		}
 
 		prev.addEventListener('click', function(){
 			plusSlides(-1);
@@ -170,16 +177,17 @@ window.addEventListener('DOMContentLoaded', function() {
 		let voting = document.getElementById('voting');
 
 		voting.addEventListener('click', () => {
-			let n1 = Math.ceil(Math.random()*99);
- 	  	let n2 = Math.ceil(Math.random()*(100-n1));
-    	let n3 = 100 - n1 - n2;
+			let n1 = Math.ceil(Math.random()*98);
+ 	  	let n2 = Math.ceil(Math.random()*(99-n1));
+    	let n3 = 99 - n1 - n2;
+    	let n5 = 1;
 			
-			resultСount[0].textContent = `${n1}%`;
-			resultСount[1].textContent = `${n2}%`;
-			resultСount[2].textContent = `${n3}%`;
-			progressBar1.style.cssText = `height: ${n1}%;`;
-			progressBar2.style.cssText = `height: ${n2}%;`;
-			progressBar3.style.cssText = `height: ${n3}%;`;
+			resultСount[0].textContent = `${n1 + n5}%`;
+			resultСount[1].textContent = `${n2 + n5}%`;
+			resultСount[2].textContent = `${n3 + n5}%`;
+			progressBar1.style.cssText = `height: ${n1 + n5}%;`;
+			progressBar2.style.cssText = `height: ${n2 + n5}%;`;
+			progressBar3.style.cssText = `height: ${n3 + n5}%;`;
 
 			let max = Math.max(n1,n2,n3);
 			if(max == n1){
@@ -197,7 +205,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			} else {
 				mainItem[2].classList.remove('main-cards-item-active');
 			}
-			console.log(max);
+			
 	  });
 
 		// crime
@@ -205,16 +213,17 @@ window.addEventListener('DOMContentLoaded', function() {
 		let crime = document.getElementById('crime');
 
 		crime.addEventListener('click', () => {
-			let n1 = Math.ceil(Math.random()*74);
- 	  	let n2 = Math.ceil(Math.random()*(75-n1));
-    	let n3 = 75 - n1 - n2;
+			let n1 = Math.ceil(Math.random()*73);
+ 	  	let n2 = Math.ceil(Math.random()*(74-n1));
+    	let n3 = 74 - n1 - n2;
     	let n4 = 25;
-    	resultСount[0].textContent = `${n1}%`;
-			resultСount[1].textContent = `${n2}%`;
-			resultСount[2].textContent = `${n3 + n4}%`;
-			progressBar1.style.cssText = `height: ${n1}%;`;
-			progressBar2.style.cssText = `height: ${n2}%;`;
-			progressBar3.style.cssText = `height: ${n3 + n4}%;`;
+    	let n5 = 1;
+    	resultСount[0].textContent = `${n1 + n5}%`;
+			resultСount[1].textContent = `${n2 + n5}%`;
+			resultСount[2].textContent = `${n3 + n4 + n5}%`;
+			progressBar1.style.cssText = `height: ${n1 + n5}%;`;
+			progressBar2.style.cssText = `height: ${n2 + n5}%;`;
+			progressBar3.style.cssText = `height: ${n3 + n4 + n5}%;`;
 			
 			let max = Math.max(n1,n2,n3+n4);
 						if(max == n1){
@@ -232,8 +241,6 @@ window.addEventListener('DOMContentLoaded', function() {
 			} else {
 				mainItem[2].classList.remove('main-cards-item-active');
 			}
-			// console.log(n1,n2,n3);
-			// console.log(max);
 		});
 
 
